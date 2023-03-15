@@ -1,5 +1,8 @@
 package com.develop.orcamentoapi.OrcamentoAPI.Controller;
 
+import com.develop.orcamentoapi.OrcamentoAPI.Domain.*;
+import com.develop.orcamentoapi.OrcamentoAPI.Services.CalculoServices;
+import com.develop.orcamentoapi.OrcamentoAPI.Services.OrcamentoServices;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,46 +16,50 @@ import java.util.UUID;
 @RestController
 @Api(value = "Cálculo")
 public class CalculoController {
-//    @Autowired
-//    public ClienteService services;
+@Autowired
+private CalculoServices calculoServices;
 
-//    @GetMapping(path = "api/cliente/list")
-//    @ApiOperation(value = "Listagem de clientes cadastrados")
-//    public ResponseEntity<List<Cliente>> clientes(){
-//        return ResponseEntity.status(HttpStatus.OK).body(services.findAll());
-//    }
-    //    @PutMapping(path = "api/cliente/")
-//    @ApiOperation(value = "Edição de clientes")
-//    public ResponseEntity<List<Cliente>> alterCliente(@RequestBody Cliente cliente){
-//        return ResponseEntity.status(HttpStatus.OK).body(services.alterCliente(cliente));
-//    }
-//    @PostMapping(path = "api/cliente/create")
-//    @ApiOperation(value = "Criação de clientes")
-//    public ResponseEntity<Cliente> create(@RequestBody ReciveClienteDTO cliente){
-//        return ResponseEntity.status(HttpStatus.OK).body(services.save(cliente));
-//    }
-//    @GetMapping(path = "api/cliente/id/{id}")
-//    @ApiOperation(value = "Buscar cliente por ID")
-//    public ResponseEntity<Optional<Cliente>> findId(@PathVariable(value = "id") UUID id){
-//        return ResponseEntity.status(HttpStatus.OK).body(services.findById(id));
-//    }
-    //    @GetMapping(path = "api/cliente/${name}")
-//    @ApiOperation(value = "Buscar cliente por nome")
-//    public ResponseEntity<Optional<Cliente>> findName(@RequestBody String name){
-//        return ResponseEntity.status(HttpStatus.OK).body(services.findByName(name));
-//    }
-//    @DeleteMapping(path = "api/cliente/delete")
-//    @ApiOperation(value = "Excluir cliente")
-//    public ResponseEntity delete(@RequestBody Cliente cliente){
-//        services.delete(cliente);
-//        return ResponseEntity.status(HttpStatus.OK).body(true);
-//    }
-    @DeleteMapping(path = "api/cliente/delete/{id}")
-    @ApiOperation(value = "Excluir cliente por id")
-    public ResponseEntity delete(@PathVariable(value = "id")UUID id){
-//        services.deletebyid(id);
-        return ResponseEntity.status(HttpStatus.OK).body(true);
+    @GetMapping(path = "api/calculo/icms/{value}/{icms}")
+    @ApiOperation(value = "Calculo do orçamento com ICMS")
+    public  ResponseEntity<Double> realizaCaluloIcms(@PathVariable(value = "value")Double value,@PathVariable(value = "icms")Double icms){
+        final Orcamento orcamento = new Orcamento();
+        final ICMS objecticms = new ICMS();
+        objecticms.setValor(icms);
+        orcamento.setValor(value);
+        var valueFinal = calculoServices.realizaCalculo(orcamento,objecticms.getValor());
+        return ResponseEntity.status(HttpStatus.OK).body(valueFinal);
     }
+    @GetMapping(path = "api/calculo/pis/{value}/{pis}")
+    @ApiOperation(value = "Calculo do orçamento com PIS")
+    public  ResponseEntity<Double> realizaCaluloPis(@PathVariable(value = "value")Double value,@PathVariable(value = "pis")Double icms){
+        final Orcamento orcamento = new Orcamento();
+        final PIS objectpis = new PIS();
+        objectpis.setValor(icms);
+        orcamento.setValor(value);
+        var valueFinal = calculoServices.realizaCalculo(orcamento,objectpis.getValor());
+        return ResponseEntity.status(HttpStatus.OK).body(valueFinal);
+    }
+    @GetMapping(path = "api/calculo/iss/{value}/{iss}")
+    @ApiOperation(value = "Calculo do orçamento com ISS")
+    public  ResponseEntity<Double> realizaCaluloIss(@PathVariable(value = "value")Double value,@PathVariable(value = "iss")Double icms){
+        final Orcamento orcamento = new Orcamento();
+        final ISS objectiss = new ISS();
+        objectiss.setValor(icms);
+        orcamento.setValor(value);
+        var valueFinal = calculoServices.realizaCalculo(orcamento,objectiss.getValor());
+        return ResponseEntity.status(HttpStatus.OK).body(valueFinal);
+    }
+    @GetMapping(path = "api/calculo/cofins/{value}/{cofins}")
+    @ApiOperation(value = "Calculo do orçamento com COFINS")
+    public  ResponseEntity<Double> realizaCaluloCofins(@PathVariable(value = "value")Double value,@PathVariable(value = "cofins")Double icms){
+        final Orcamento orcamento = new Orcamento();
+        final COFINS objectCofins = new COFINS();
+        objectCofins.setValor(icms);
+        orcamento.setValor(value);
+        var valueFinal = calculoServices.realizaCalculo(orcamento,objectCofins.getValor());
+        return ResponseEntity.status(HttpStatus.OK).body(valueFinal);
+    }
+
 }
 
 
