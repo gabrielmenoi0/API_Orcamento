@@ -1,18 +1,18 @@
 package com.develop.orcamentoapi.OrcamentoAPI.Domain;
 
 public class Desconto {
-    private Double quantidade;
+    private Integer quantidade;
 
-    public Desconto(Double quantidade, Double valorDesconto) {
+    public Desconto(Integer quantidade, Double valorDesconto) {
         this.quantidade = quantidade;
         this.valorDesconto = valorDesconto;
     }
 
-    public Double getQuantidade() {
+    public Integer getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(Double quantidade) {
+    public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
     }
 

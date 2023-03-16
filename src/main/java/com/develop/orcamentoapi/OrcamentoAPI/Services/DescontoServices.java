@@ -15,6 +15,11 @@ public class DescontoServices {
             return calculaSemDesconto(orcamento,desconto);
         }
     }
+    public Double calculoRecursivo(Orcamento orcamento, Desconto desconto, Integer qtd){
+        int number = qtd;
+        if (number == 1) return calculo(orcamento, desconto);
+        return calculoRecursivo(orcamento, desconto,number -1);
+    }
 
     public Double calculaDesconto5itens(Orcamento orcamento, Desconto desconto){
         double valueAll = orcamento.getValor();

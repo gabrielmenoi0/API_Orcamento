@@ -20,12 +20,23 @@ public class DescontoController {
 
     @GetMapping(path = "api/desconto/{value}/{qtd}")
     @ApiOperation(value = "Calculo do valor desconto do orçamento")
-    public ResponseEntity<Double> realizaCaluloDesconto(@PathVariable(value = "value")Double value, @PathVariable(value = "qtd")Double qtd){
+    public ResponseEntity<Double> realizaCaluloDesconto(@PathVariable(value = "value")Double value, @PathVariable(value = "qtd")Integer qtd){
         final Orcamento orcamento = new Orcamento();
         final Desconto desconto = new Desconto();
         desconto.setQuantidade(qtd);
         orcamento.setValor(value);
         var valueFinal = descontoServices.calculo(orcamento,desconto);
+        return ResponseEntity.status(HttpStatus.OK).body(valueFinal);
+    }
+
+    @GetMapping(path = "api/desconto/recursivo/{value}/{qtd}")
+    @ApiOperation(value = "Calculo do valor desconto do orçamento")
+    public ResponseEntity<Double> realizaCaluloDescontoRecursivo(@PathVariable(value = "value")Double value, @PathVariable(value = "qtd")Integer qtd){
+        final Orcamento orcamento = new Orcamento();
+        final Desconto desconto = new Desconto();
+        desconto.setQuantidade(qtd);
+        orcamento.setValor(value);
+        var valueFinal = descontoServices.calculoRecursivo(orcamento,desconto,desconto.getQuantidade());
         return ResponseEntity.status(HttpStatus.OK).body(valueFinal);
     }
 }
