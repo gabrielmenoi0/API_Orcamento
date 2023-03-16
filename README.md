@@ -15,6 +15,8 @@
   <a href="#tecnicas-e-tecnologias-utilizadas">Strategy</a> •
   <a href="#tecnicas-e-tecnologias-utilizadas">Decorator</a> •
   <a href="#tecnicas-e-tecnologias-utilizadas">Chain of Responsibility</a> 
+  <a href="#tecnicas-e-tecnologias-utilizadas"></a> •
+  <a href="#tecnicas-e-tecnologias-utilizadas">State</a> 
 </div>
 
 ## Descrição do Projeto
