@@ -27,6 +27,12 @@
 <img src="readme/img.png" width="900" height="550"/>
 </div>
 
+## Integrantes da equipe
+<p align="justify">Gabriel Menoi - RA:602655</p>
+<p align="justify">Gabriel Mielo - RA:601128</p>
+<p align="justify">Matheus Araújo - RA:603236</p>
+
+
 [//]: # (## Técnicas e tecnologias utilizadas)
 
 [//]: # ()
