@@ -2,6 +2,7 @@ package com.develop.orcamentoapi.OrcamentoAPI.Controller;
 
 import com.develop.orcamentoapi.OrcamentoAPI.DTO.OrcamentoDTO;
 import com.develop.orcamentoapi.OrcamentoAPI.Domain.*;
+import com.develop.orcamentoapi.OrcamentoAPI.Repository.OrcamentoRepository;
 import com.develop.orcamentoapi.OrcamentoAPI.Services.OrcamentoServices;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import java.util.UUID;
 public class OrcamentoController {
     @Autowired
     private OrcamentoServices orcamentoServices;
+
 
     @GetMapping(path = "api/orcamento/calculo/{value}/{icms}/{pis}/{cofins}/{iss}")
     @ApiOperation(value = "Calcular orçamento com todos os impostos")
@@ -76,6 +78,19 @@ public class OrcamentoController {
     @ApiOperation(value = "Retorna lista de orçamentos")
     public ResponseEntity<List<Orcamento>> findOrcamentoList(){
         return ResponseEntity.status(HttpStatus.OK).body(orcamentoServices.findAll());
+    }
+
+    @DeleteMapping(path = "api/orcamento/delete")
+    @ApiOperation(value = "Excluir URL")
+    public ResponseEntity delete(@RequestBody Orcamento orcamento){
+        orcamentoServices.delete(orcamento);
+        return ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+    @DeleteMapping(path = "api/orcamento/delete/{id}")
+    @ApiOperation(value = "Excluir URL por id")
+    public ResponseEntity deletebyid(@PathVariable(value = "id")UUID id){
+        orcamentoServices.deletebyid(id);
+        return ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
 }

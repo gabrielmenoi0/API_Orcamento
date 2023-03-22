@@ -49,4 +49,11 @@ public class OrcamentoServices {
         updated.setValor(orcamento.get().getValor());
         return orcamentoRepository.save(updated);
     }
+
+    public void delete(Orcamento url){
+        orcamentoRepository.delete(url);
+    }
+    public void deletebyid(UUID id){
+        orcamentoRepository.deleteById(id);
+    }
 }
