@@ -1,7 +1,5 @@
 package com.develop.orcamentoapi.OrcamentoAPI.Domain;
-
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.UUID;
 
