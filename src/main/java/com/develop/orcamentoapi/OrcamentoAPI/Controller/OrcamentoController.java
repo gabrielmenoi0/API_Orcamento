@@ -1,6 +1,6 @@
 package com.develop.orcamentoapi.OrcamentoAPI.Controller;
 
-import com.develop.orcamentoapi.OrcamentoAPI.DTO.OrcamentoDTO;
+
 import com.develop.orcamentoapi.OrcamentoAPI.Domain.*;
 import com.develop.orcamentoapi.OrcamentoAPI.Repository.OrcamentoRepository;
 import com.develop.orcamentoapi.OrcamentoAPI.Services.OrcamentoServices;
@@ -23,7 +23,7 @@ public class OrcamentoController {
     private OrcamentoServices orcamentoServices;
 
 
-    @GetMapping(path = "api/orcamento/calculo/{value}/{icms}/{pis}/{cofins}/{iss}")
+    @PostMapping(path = "api/orcamento/calculo/{value}/{icms}/{pis}/{cofins}/{iss}")
     @ApiOperation(value = "Calcular orçamento com todos os impostos")
     public ResponseEntity<ResponseCalculoTotal> realizaCalulo(
             @PathVariable(value = "value", required = false)Double value,

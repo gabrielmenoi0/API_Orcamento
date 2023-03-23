@@ -16,7 +16,7 @@
   <a href="#tecnicas-e-tecnologias-utilizadas">Decorator</a> •
   <a href="#tecnicas-e-tecnologias-utilizadas">Chain of Responsibility</a> 
   <a href="#tecnicas-e-tecnologias-utilizadas"></a> •
-  <a href="#tecnicas-e-tecnologias-utilizadas">State</a> 
+  <a href="#tecnicas-e-tecnologias-utilizadas">Template Method</a> 
 </div>
 
 ## Descrição do Projeto

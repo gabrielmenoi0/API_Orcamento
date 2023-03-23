@@ -18,6 +18,15 @@ public class Orcamento {
     public double Valor;
     public double ValorImpostos;
     public String state;
+    public Integer qtd;
+
+    public Integer getQtd() {
+        return qtd;
+    }
+
+    public void setQtd(Integer qtd) {
+        this.qtd = qtd;
+    }
 
     public double getValorImpostos() {
         return ValorImpostos;
@@ -35,10 +44,11 @@ public class Orcamento {
         this.state = state;
     }
 
-    public Orcamento(UUID id, double valor, double valorImpostos, String state) {
+    public Orcamento(UUID id, double valor, double valorImpostos, String state,Integer qtd) {
         this.id = id;
         this.Valor = valor;
         this.ValorImpostos = valorImpostos;
+        this.qtd = qtd;
         this.state = state;
     }
 

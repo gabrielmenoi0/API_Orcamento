@@ -36,4 +36,8 @@ public class Imposto {
     public void setValor(Double valor) {
         this.valor = valor;
     }
+
+    public double calculaValor(){
+        return 0.0;
+    }
 }
