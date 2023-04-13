@@ -39,7 +39,7 @@ public class ImpostoAdicionalController {
     }
 
 
-    @GetMapping(path = "api/orcamento/calculocondicional/IHIT}")
+    @GetMapping(path = "api/orcamento/calculocondicional/IHIT")
     @ApiOperation(value = "Calcular de imposto condicional")
     public ResponseEntity realizaCaluloCondicionalIHIT(){
         Optional<OrcamentoTempleteDTO> orcamentoTempleteDTO = Optional.of(new OrcamentoTempleteDTO());

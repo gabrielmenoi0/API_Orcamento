@@ -23,13 +23,14 @@ public class OrcamentoController {
     private OrcamentoServices orcamentoServices;
 
 
-    @PostMapping(path = "api/orcamento/calculo/{value}/{icms}/{pis}/{cofins}/{iss}")
+    @PostMapping(path = "api/orcamento/calculo/{value}/{icms}/{pis}/{cofins}/{iss}/{qtd}")
     @ApiOperation(value = "Calcular orçamento com todos os impostos")
     public ResponseEntity<ResponseCalculoTotal> realizaCalulo(
             @PathVariable(value = "value", required = false)Double value,
             @PathVariable(value = "icms", required = false)Double icms,
             @PathVariable(value = "pis", required = false)Double pis,
             @PathVariable(value = "cofins", required = false)Double cofins,
+            @PathVariable(value = "qtd", required = false)int qtd,
             @PathVariable(value = "iss", required = false)Double iss){
         final COFINS objectCofins = new COFINS();
         final PIS objectPis = new PIS();
@@ -37,6 +38,7 @@ public class OrcamentoController {
         final ICMS objectIcms= new ICMS();
         final Orcamento orcamento = new Orcamento();
         orcamento.setValor(value);
+        orcamento.setQtd(qtd);
         orcamento.setState("EM_APROVACAO");
         objectCofins.setValor(cofins);
         objectIcms.setValor(icms);
@@ -81,7 +83,7 @@ public class OrcamentoController {
     }
 
     @DeleteMapping(path = "api/orcamento/delete")
-    @ApiOperation(value = "Excluir URL")
+    @ApiOperation(value = "Excluir Orçamento")
     public ResponseEntity delete(@RequestBody Orcamento orcamento){
         orcamentoServices.delete(orcamento);
         return ResponseEntity.status(HttpStatus.OK).body(true);
