@@ -31,6 +31,7 @@
 <p align="justify">Gabriel Menoi - RA:602655</p>
 <p align="justify">Gabriel Mielo - RA:601128</p>
 <p align="justify">Matheus Araújo - RA:603236</p>
+<p align="justify">Tiago Santos  -  RA: 603181</p>
 
 
 [//]: # (## Técnicas e tecnologias utilizadas)
