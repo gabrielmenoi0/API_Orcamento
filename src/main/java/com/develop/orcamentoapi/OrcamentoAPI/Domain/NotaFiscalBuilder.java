@@ -2,11 +2,10 @@ package com.develop.orcamentoapi.OrcamentoAPI.Domain;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.List;
 import java.time.LocalDateTime;
 @Entity
 @Table(name = "tb_nota")
-public class NotaFiscal {
+public class NotaFiscalBuilder {
     private String razaoSocial;
     @Id
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
@@ -20,7 +19,7 @@ public class NotaFiscal {
         private LocalDateTime data;
         private String observacoes;
 
-        private NotaFiscal(String razaoSocial, String cnpj, double valorTotal, double impostos, LocalDateTime data, String observacoes) {
+        private NotaFiscalBuilder(String razaoSocial, String cnpj, double valorTotal, double impostos, LocalDateTime data, String observacoes) {
             this.razaoSocial = razaoSocial;
             this.cnpj = cnpj;
             this.valorTotal = valorTotal;
@@ -92,8 +91,8 @@ public class NotaFiscal {
                 return this;
             }
 
-            public NotaFiscal build() {
-                return new NotaFiscal(razaoSocial, cnpj, valorTotal, impostos, data, observacoes);
+            public NotaFiscalBuilder build() {
+                return new NotaFiscalBuilder(razaoSocial, cnpj, valorTotal, impostos, data, observacoes);
             }
         }
     }
